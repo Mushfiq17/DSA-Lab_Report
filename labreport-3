@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int ID[100], size, key, pos = -1;
+    cout << "Enter number of student: ";
+    cin >> size;
+    cout << "Enter ID of " << size << " student "<<endl;
+    for (int i = 0; i < size; i++)
+    {
+        cin >> ID[i];}
+    cout << "Enter student ID to delete: ";
+    cin >> key;
+    int low = 0, high = size - 1;
+    while (low <= high)
+    {int mid = (low + high) / 2;
+        if (ID[mid] == key)
+        {pos = mid;
+            break;}
+        else if (ID[mid] < key)
+        {low = mid + 1;}
+        else
+        {high = mid - 1;}
+    }
+    if (pos != -1)
+    {
+        cout << "Student ID " << key << " found at position " << pos << endl;
+        for (int i = pos; i < size - 1; i++)
+        {ID[i] = ID[i + 1];}
+        size--;
+        cout << "Student ID " << key << " deleted successfully." << endl;
+        cout << "Updated list of Student IDs: ";
+        for (int i = 0; i < size; i++)
+            {cout << ID[i] << " ";}
+        cout << endl;}
+    else
+    { cout << "Student ID " << key << " not found." << endl;}
+    return 0;}
